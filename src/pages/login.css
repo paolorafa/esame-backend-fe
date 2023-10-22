@@ -1,0 +1,36 @@
+
+
+.login-form-2{
+    height: 50vh;
+    width: 30rem;
+    padding: 9%;
+    background: #f05837;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    transition: width 2s, height 2s;
+}
+.login-form-2 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color: #fff;
+}
+.btnSubmit{
+    font-weight: 600;
+    width: 250px;
+    color: #282726;
+    background-color: #fff;
+    border: none;
+    border-radius: 1.5rem;
+    padding:2%;
+}
+
+.my-container{
+    border: black solid 2px;
+    height: 100vh;
+    background-color: #F29866;
+}
+
+.login-form-2:hover{
+    width:50rem;
+  height: 80vh;
+}
+    
