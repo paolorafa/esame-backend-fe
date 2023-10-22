@@ -1,13 +1,11 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import "./login.css";
 import FormAuthor from "../components/formAuthor/FormAuthor";
 
 function Login() {
   const [loginData, setLoginData] = useState({});
-  const [loginGit, setLoginGit] = useSearchParams()
-  
-
+  const [loginGit, setLoginGit] = useSearchParams();
 
   const navigate = useNavigate();
 
@@ -19,7 +17,6 @@ function Login() {
       [name]: value,
     });
   };
-  
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -38,8 +35,6 @@ function Login() {
         localStorage.setItem("loggedIn", JSON.stringify(data.token));
         navigate("/home");
       }
-
-      
     } catch (e) {
       console.log(e);
     }
@@ -47,15 +42,9 @@ function Login() {
 
   const redirectForLoginWithGitHub = async () => {
     window.location.href = `${process.env.REACT_APP_URL}/auth/github`;
-   
-    
   };
 
-  useEffect(() => {
-   
-   
-  }, [])
- 
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -63,43 +52,50 @@ function Login() {
         <div className="login-container-1 ">
           <FormAuthor />
         </div>
-        <div className="login-container-2">
-          <form className="login-form-2 " onSubmit={onSubmit}>
-            <h3>Login</h3>
-            <div className=" d-flex flex-column align-items-center gap-3 m-2">
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="btnSubmit"
-                  name="email"
-                  required
-                  placeholder="Your Email *"
-                  onChange={hadleInputChanged}
-                />
+        <div className="d-flex flex-column align-items-center">
+          
+          <div className="login-container-2">
+            <form className="login-form-2 " onSubmit={onSubmit}>
+              <h3>Login</h3>
+              <div className=" d-flex flex-column align-items-center gap-3 m-2">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="btnSubmit"
+                    name="email"
+                    required
+                    placeholder="Your Email *"
+                    onChange={hadleInputChanged}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    className="btnSubmit"
+                    name="password"
+                    required
+                    placeholder="Your Password *"
+                    onChange={hadleInputChanged}
+                  />
+                </div>
+                <div className="form-group ">
+                  <input type="submit" className="btnSubmit" value="Login" />
+                </div>
               </div>
-              <div className="form-group">
-                <input
-                  type="password"
-                  className="btnSubmit"
-                  name="password"
-                  required
-                  placeholder="Your Password *"
-                  onChange={hadleInputChanged}
-                />
-              </div>
-              <div className="form-group ">
-                <input type="submit" className="btnSubmit" value="Login" />
-              </div>
-              <div>
-                <button
-                  onClick={() => redirectForLoginWithGitHub()}
-                  className="btnSubmit"
-                >
-                  Entra con Github
-                </button>
-              </div>
-            </div>
-          </form>
+            </form>
+
+
+            
+          </div>
+
+          <div>
+            <button
+              onClick={() => redirectForLoginWithGitHub()}
+              className="btnSubmit "
+            >
+              Entra con Github
+            </button>
+          </div>
         </div>
       </div>
     </>
