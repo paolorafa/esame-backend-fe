@@ -16,6 +16,7 @@ export default function App() {
                     <Route path='/home' element={<Home/>}/>
                     <Route path='/success/:token' element={<Home/>}/>
             </Route>
+            
         </Routes>
       </BrowserRouter>
 

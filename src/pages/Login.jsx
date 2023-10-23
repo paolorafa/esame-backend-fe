@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./login.css";
 import FormAuthor from "../components/formAuthor/FormAuthor";
 
 function Login() {
   const [loginData, setLoginData] = useState({});
-  const [loginGit, setLoginGit] = useSearchParams();
 
   const navigate = useNavigate();
 
@@ -40,11 +39,19 @@ function Login() {
     }
   };
 
-  const redirectForLoginWithGitHub = async () => {
+  const redirectForLoginWithGitHub = () => {
     window.location.href = `${process.env.REACT_APP_URL}/auth/github`;
+   
   };
-
-  useEffect(() => {}, []);
+  useEffect(() => {
+    // Controlla se c'è un token nel localStorage
+    const tokenFromLocalStorage = localStorage.getItem("loggedIn");
+  
+    if (tokenFromLocalStorage) {
+      // Il token è presente nel localStorage, reindirizza l'utente alla pagina "home"
+      navigate("/home");
+    }
+  }, []);
 
   return (
     <>
@@ -53,7 +60,6 @@ function Login() {
           <FormAuthor />
         </div>
         <div className="d-flex flex-column align-items-center">
-          
           <div className="login-container-2">
             <form className="login-form-2 " onSubmit={onSubmit}>
               <h3>Login</h3>
@@ -83,9 +89,6 @@ function Login() {
                 </div>
               </div>
             </form>
-
-
-            
           </div>
 
           <div>
